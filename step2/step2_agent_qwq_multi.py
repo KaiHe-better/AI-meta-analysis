@@ -353,6 +353,7 @@ def process_one_record(index, rec, filtered_dict):
         "PMID": rec.get("PMID", ""),
         "Title": rec.get("Title", ""),
         "Abstract": rec.get("Abstract", ""),
+        "Method": rec.get("Method", ""),
         "Decision": decision,
         "Ambiguity": ambiguity,
         "Reason": reason,

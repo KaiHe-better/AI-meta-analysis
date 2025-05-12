@@ -109,7 +109,7 @@ def main():
         description="Batch OCR: one image per request using OpenAI's multimodal model"    )
     parser.add_argument('--root_dir', nargs='?', default="/raid/hpc/hekai/WorkShop/My_project/Medical_paper_agent/agent3/data/OCR_results", help="Root folder containing PDFs")
     parser.add_argument('--output_dir', nargs='?', default="/raid/hpc/hekai/WorkShop/My_project/Medical_paper_agent/agent3/data/OCR_extracted", help="Folder to save OCR txt files")
-    parser.add_argument('--need_list', nargs='+', default=["SR_344"], help="List of first-level subdirs to process")
+    parser.add_argument('--need_list', nargs='+', default=["SR_84_test"], help="List of first-level subdirs to process")
     args = parser.parse_args()
 
     process_folder(args.root_dir, args.need_list, args.output_dir)

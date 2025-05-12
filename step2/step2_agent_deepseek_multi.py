@@ -302,6 +302,7 @@ def process_one_record(g_idx, index, rec, filtered_result, output_file):
         "PMID": rec.get("PMID", ""),
         "Title": rec.get("Title", ""),
         "Abstract": rec.get("Abstract", ""),
+        "Method": rec.get("Method", ""),
         "Decision": decision,
         "Ambiguity": ambiguity,
         "Reason": reason,

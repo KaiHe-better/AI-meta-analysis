@@ -189,12 +189,16 @@ def process_one_record(index, rec, filtered_result):
     """
     单条记录处理逻辑
     """
-    decision, reason, response_text, ambiguity_res, prompt = judge_record(filtered_result, rec)
+    if rec["Method"] == "None":
+        decision, reason, response_text, ambiguity_res, prompt = "No Method","None","None","None","None"
+    else:
+        decision, reason, response_text, ambiguity_res, prompt = judge_record(filtered_result, rec)
     return {
         "Index": index,
         "PMID": rec.get("PMID", ""),
         "Title": rec.get("Title", ""),
         "Abstract": rec.get("Abstract", ""),
+        "Method": rec.get("Method", ""),
         "Decision": decision,
         "Ambiguity": ambiguity_res,
         "Reason": reason,
@@ -315,10 +319,14 @@ def openai_main(tmp_dic=None):
     num_groups = 100
     step_1_based = True
     if len(sys.argv) < 3 and tmp_dic==None:
-        file_ID = 490
-        need_ids_dic = {}
+        # file_ID = 490
+        # need_ids_dic = {}
+
+        file_ID = 84
+        need_ids_dic = {file_ID:[26488032, 27486640, 38320495]}
+
         abstract_file_path = f"data/abstract_title_test/{file_ID}_pubmed_results.csv"
-        method_file_path = f"data/OCR_extracted_test/SR_{file_ID}_test"
+        method_file_path = f"data/OCR_extracted/SR_{file_ID}_test"
         print("==testing==========================================")
     elif len(sys.argv) < 3 and len(tmp_dic)>0:
         file_ID = list(tmp_dic.keys())[0]
